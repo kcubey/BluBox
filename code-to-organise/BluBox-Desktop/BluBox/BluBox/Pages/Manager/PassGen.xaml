@@ -1,0 +1,99 @@
+﻿<Page x:Class="BluBox.Pages.Manager.PassGen"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:BluBox.Pages.Manager"
+      mc:Ignorable="d" 
+      d:DesignHeight="550" d:DesignWidth="1050"
+      ShowsNavigationUI="False"
+      Title="Password Generator">
+
+    <Grid>
+        <StackPanel Name="stackMain" >
+
+            
+            <!--Seperator-->
+            <WrapPanel>
+                
+                <Button  Click="ButtonBack_Click" Style="{DynamicResource PassBackButton}" Cursor="Hand">
+                    <Button.Template>
+                        <ControlTemplate>
+                            <Image Source="/Media/PasswordManager/back.png" />
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+                <Label Style="{DynamicResource PassTitleLabel}" >
+                    Password Generator
+                </Label>
+            </WrapPanel>
+            
+            <!--seperator-->
+           
+            <Separator Background="Gray" />
+ 
+
+            <!--Password Length Selection-->
+            <Label Style="{DynamicResource PassGenInstruction}" >1. Select Password Length</Label>
+            <Label Style="{DynamicResource PassGenDesc}">You can choose between  4 to 32 characters. Min. 15 characters is recommended for strong passwords.</Label>
+            <WrapPanel Style="{DynamicResource PassGenWrap}">
+                <Slider  Minimum="4" Maximum="32"  Name="requiredLength" Value="15" Style="{DynamicResource PassGenSlide}"/>
+                <TextBox Text="{Binding ElementName=requiredLength, Path=Value, UpdateSourceTrigger=PropertyChanged}" Style="{DynamicResource PassGenSTB}" />
+            </WrapPanel>
+
+            <!-- No of Passwords-->
+            <Label Style="{DynamicResource PassGenInstruction}">2. Choose Num. of Passwords</Label>
+            <Label Style="{DynamicResource PassGenDesc}">You can choose to generate up to 10 Passwords per submission.</Label>
+            <WrapPanel Style="{DynamicResource PassGenWrap}">
+                <Slider Width="300" Minimum="1" Maximum="10" Name="number" Value="1" Style="{DynamicResource PassGenSlide}"/>
+                <TextBox Text="{Binding ElementName=number, Path=Value, UpdateSourceTrigger=PropertyChanged}"  Style="{DynamicResource PassGenSTB}" />
+            </WrapPanel>
+
+
+            <!--Password Requirements-->
+
+            <Label Style="{DynamicResource PassGenInstruction}">3. Choose Password Characters</Label>
+            <Label Style="{DynamicResource PassGenDesc}">
+            A strong password consists alphanumerics, different casing of alphabets and different special characters .
+            You may customize your password from the options below to suit different websites' password policy.
+            Click Advanced Options to specify special characters needed.</Label>
+
+            <CheckBox Style="{DynamicResource PassGenCB}"  Name="chkboxLC" Content="Lower Case Alphabets"/>
+            <CheckBox Style="{DynamicResource PassGenCB}" Name="chkboxUC" Content="Upper Case Alphabets" />
+            <CheckBox Style="{DynamicResource PassGenCB}" Name="chkboxNum" Content="Numericals" />
+            <WrapPanel>
+                <CheckBox Style="{DynamicResource PassGenCB}" Name="chkboxSC" Content="Special Characters"/>
+                <Button Width="150" Height="20" Content="Advanced Options" FontSize="13" Margin="5,0,0,0" Click="Button_Click_1"  />
+            </WrapPanel>
+
+
+            <!--Generate Button-->
+
+            <Button  Width="80" Height="30" Margin="30,5,5,5" FontSize="18" Content="Generate" Click="Button_Click"  HorizontalAlignment="Left" Cursor="Hand"/>
+
+           
+            <!--Output-->
+            <TextBox ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                     ScrollViewer.VerticalScrollBarVisibility="Auto" 
+                     Background="White" Width="400" Height="70" 
+                     HorizontalAlignment="Left" Margin="30,10,10,10" 
+                     Name="resultPassword" IsReadOnly="True"/>
+
+
+        </StackPanel>
+
+        <StackPanel>
+            <Button Name="CharBack" VerticalAlignment="Top" HorizontalAlignment="Left" Width="350" Height="20" Content="Back to Password Generator" Margin="30,30,0,0" Click="Button_Click_2"/>
+            <Label Name="CharInstruct" Style="{DynamicResource PassGenInstruction}">Choose Special Characters</Label>
+            <WrapPanel Name="selectOption" Margin="30,5,0,0">
+                <Button  Style="{DynamicResource PassGenSelect}" Content="Select All" Click="Button_Click_3"  />
+                <Button   Style="{DynamicResource PassGenSelect}" Content="Unselect All" Margin="5,0,0,0" Click="Button_Click_4"/>
+            </WrapPanel>
+            <WrapPanel  Name="stackChars" HorizontalAlignment="Left"  MaxWidth="500"/>
+        </StackPanel>
+
+
+
+
+    </Grid>
+</Page>

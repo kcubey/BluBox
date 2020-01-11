@@ -1,0 +1,64 @@
+﻿<Page x:Class="BluBox.Pages.Home"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:BluBox.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="550" d:DesignWidth="1050"
+      ShowsNavigationUI="False"
+      Title="Home">
+
+    <Grid>
+        <StackPanel>
+            <Label FontWeight="Bold" FontSize="20">
+                Welcome to BluBox!
+            </Label>
+            <Label>
+                Please ensure that the mobile app is running before opening this app. If not, please close and reopen the app.
+            </Label>
+            <TextBlock><LineBreak/></TextBlock>
+
+            <StackPanel Width="500">
+
+                
+
+                <DockPanel HorizontalAlignment="Right">
+                    <Button Click="clickRefresh" Padding="5">Get New Details</Button>
+                    <TextBlock><LineBreak/></TextBlock>
+                </DockPanel>
+
+                <DockPanel HorizontalAlignment="Left">
+                    <Label Name="medNameLbl" FontWeight="Bold">Name:</Label>
+                    <TextBox TextWrapping="Wrap" Width="200" Margin="43,0,0,0" Name="medName" TextAlignment="Center" VerticalAlignment="Center" Padding="5" />
+                    <!--<TextBox Width="200" Name="medName" IsReadOnly="True">tempname</TextBox>-->
+                    <TextBlock><LineBreak/></TextBlock>
+                </DockPanel>
+
+                <TextBlock><LineBreak/></TextBlock>
+
+                <DockPanel HorizontalAlignment="Left">
+                    <Label Name="medExpLbl" FontWeight="Bold">Expiry Date:</Label>
+                    <TextBox TextWrapping="Wrap" Width="200" Name="medExp" TextAlignment="Center" VerticalAlignment="Center" Padding="5" />
+                    <TextBlock><LineBreak/></TextBlock>
+                </DockPanel>
+                
+
+                <DockPanel HorizontalAlignment="Right">
+                    <Label Name="updateMessage" Visibility="Hidden">Medicine added!</Label>
+                    <Button Name="clear" Padding="5" Click="clickClear">Clear</Button>
+                    <Button Name="confirm" Margin="10,0,0,0" Padding="5" Click="OnConfirm">Confirm</Button>
+                    <TextBlock><LineBreak/></TextBlock>
+                </DockPanel>
+
+            </StackPanel>
+            
+
+
+
+            
+
+        </StackPanel>
+        
+    </Grid>
+</Page>

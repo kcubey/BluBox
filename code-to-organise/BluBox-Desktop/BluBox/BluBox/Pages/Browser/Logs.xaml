@@ -1,0 +1,113 @@
+﻿<Page x:Class="BluBox.Pages.Browser.Logs"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:BluBox.Pages.Browser"
+      mc:Ignorable="d" 
+      d:DesignHeight="550" d:DesignWidth="1050"
+      ShowsNavigationUI="False"
+      Title="Logs">
+
+    <Grid>
+        <ScrollViewer>
+            <StackPanel>
+                <WrapPanel>
+                    <Button  Click="OnClick" Style="{DynamicResource backBtn}" 
+                         CommandParameter="/Pages/Browser/BrowserHome.xaml">
+                        <Button.Template>
+                            <ControlTemplate>
+                                <Image Source="/Media/PasswordManager/back.png" />
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                    <Label Style="{DynamicResource backLbl}" >
+                        Logs
+                    </Label>
+                </WrapPanel>
+                <Separator Background="Gray"/>
+                
+                <Label Style="{DynamicResource FAQLbl}" Margin="0" Width="800">Traffic Logs</Label>
+                <TextBlock Style="{DynamicResource faqTB}" Width="800">
+                    View your traffic logs below.
+                    <LineBreak/><LineBreak/>
+                    When the application is closed, they will be saved to the application's base folder.
+                </TextBlock>
+                
+                <DataGrid AutoGenerateColumns="False" 
+                      Height="300" 
+                      HorizontalAlignment="Center" 
+                      Name="dataGrid1" 
+                      VerticalAlignment="Top" 
+                      IsReadOnly="True"
+                      Width="800">
+                    <DataGrid.Columns >
+                        <DataGridTextColumn Header="Log ID" Binding="{Binding Path=A}" MinWidth="60" MaxWidth="60">
+                            <DataGridTextColumn.ElementStyle>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="TextWrapping" Value="Wrap"/>
+                                </Style>
+                            </DataGridTextColumn.ElementStyle>
+                        </DataGridTextColumn>
+
+                        <DataGridTextColumn Header="URL" Binding="{Binding Path=B}" MinWidth="232" MaxWidth="232">
+                            <DataGridTextColumn.ElementStyle>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="TextWrapping" Value="Wrap"/>
+                                </Style>
+                            </DataGridTextColumn.ElementStyle>
+                        </DataGridTextColumn>
+
+                        <DataGridTextColumn Header="Host Name" Binding="{Binding Path=C}" MinWidth="232" MaxWidth="232">
+                            <DataGridTextColumn.ElementStyle>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="TextWrapping" Value="Wrap"/>
+                                </Style>
+                            </DataGridTextColumn.ElementStyle>
+                        </DataGridTextColumn>
+
+                        <DataGridTextColumn Header="State" Binding="{Binding Path=D}" MinWidth="80" MaxWidth="80">
+                            <DataGridTextColumn.ElementStyle>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="TextWrapping" Value="Wrap"/>
+                                </Style>
+                            </DataGridTextColumn.ElementStyle>
+                        </DataGridTextColumn>
+
+                        <DataGridTextColumn Header="Date/Time" Binding="{Binding Path=E}" MinWidth="171" MaxWidth="171">
+                            <DataGridTextColumn.ElementStyle>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="TextWrapping" Value="Wrap"/>
+                                </Style>
+                            </DataGridTextColumn.ElementStyle>
+                        </DataGridTextColumn>
+
+                    </DataGrid.Columns>
+                </DataGrid>
+
+                <Separator Height="20" Background="Transparent"/>
+                <Separator Background="Gray"/>
+                <Separator Height="20" Background="Transparent"/>
+
+                <StackPanel Width="800">
+                    <DockPanel>
+                        <Label Style="{DynamicResource FAQLbl}" Margin="0">Blacklisted Websites</Label>
+                        <WrapPanel HorizontalAlignment="Right">
+                            <Button Click="RemoveWebsite" Style="{DynamicResource selectBtn}" Margin="0,0,10,0">Remove Website</Button>
+                            <Button Click="AddWebsite" Style="{DynamicResource selectBtn}" Margin="0">Add Website</Button>
+                        </WrapPanel>
+                        
+                    </DockPanel>
+
+                    <Separator Height="20" Background="Transparent"/>
+
+                    <ListBox Name="listBox1" Width="800">
+                    </ListBox>
+                </StackPanel>
+                
+                <Separator Height="20" Background="Transparent"/>
+
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Page>
