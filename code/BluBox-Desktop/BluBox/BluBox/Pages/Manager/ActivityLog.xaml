@@ -1,0 +1,74 @@
+﻿<Page x:Class="BluBox.Pages.Manager.ActivityLog"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:BluBox.Pages.Manager"
+      mc:Ignorable="d" 
+      d:DesignHeight="550" d:DesignWidth="1050"
+      ShowsNavigationUI="False"
+      Title="Activity Log">
+
+    <Grid>
+        <StackPanel>
+
+            <WrapPanel>
+
+                <Button  Click="ButtonBack_Click" Style="{DynamicResource PassBackButton}" Cursor="Hand">
+                    <Button.Template>
+                        <ControlTemplate>
+                            <Image Source="/Media/PasswordManager/back.png" />
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+                <Label Style="{DynamicResource PassTitleLabel}" >
+                    Activity Log
+                </Label>
+            </WrapPanel>
+
+
+
+            <!--Separator-->
+            <Separator Background="Gray" />
+
+            <Label Style="{DynamicResource AddServiceRequirement}" >Note: Date and Time is in Singapore Timezone.</Label>
+
+            <DataGrid Name="LogTable"  HorizontalAlignment="Left" Margin="30,0,0,0" AutoGenerateColumns = "False" CanUserResizeRows="False" CanUserResizeColumns="False" CanUserReorderColumns="False"  Width="750px" Height="150px"  CanUserAddRows="False" CanUserDeleteRows="False" CanUserSortColumns="False" SelectionChanged="LogTable_SelectionChanged" HeadersVisibility="Column" SelectionMode="Single" >
+                
+
+
+                <DataGrid.Columns>
+                    
+                    <DataGridTextColumn  Binding="{Binding Path=logDateTime}" Header="DateTime" IsReadOnly="True" Width="170"/>
+                    <DataGridTextColumn Binding="{Binding Path=logDetails}" Header="Details"  Width="*" IsReadOnly="True"/>
+                    <DataGridTextColumn Binding="{Binding Path=logId}" Header="logId" IsReadOnly="True" Visibility="Collapsed"/>
+                </DataGrid.Columns>
+
+            </DataGrid>
+
+
+            <Label Style="{DynamicResource AddServiceTag}" Name="errorMsg"></Label>
+
+      
+            <Button  Width="200" Height="30" Margin="30,5,5,5" FontSize="14"  HorizontalAlignment="Left" Cursor="Hand" Name="Report" Content="Report Suspicious Activity" Click="Report_Click"/>
+
+            <StackPanel Name="Reporting" Visibility="Collapsed">
+            <Label Style="{DynamicResource AddServiceRequirement}" >Selected Entries</Label>
+                <DataGrid Name="ReportTable"  HorizontalAlignment="Left" Margin="30,0,0,0" AutoGenerateColumns = "False" CanUserResizeRows="False" CanUserResizeColumns="False" CanUserReorderColumns="False"  Width="750px" Height="150px"  CanUserAddRows="False" CanUserDeleteRows="False" CanUserSortColumns="False"  HeadersVisibility="All" SelectionMode="Single" SelectionChanged="ReportTable_SelectionChanged" >
+                    <DataGrid.Columns>
+
+                        <DataGridTextColumn  Binding="{Binding Path=logDateTime}" Header="DateTime" IsReadOnly="True" Width="170"/>
+                        <DataGridTextColumn Binding="{Binding Path=logDetails}" Header="Details"  Width="*" IsReadOnly="True"/>
+                        <DataGridTextColumn Binding="{Binding Path=logId}" Header="logId" IsReadOnly="True" Visibility="Collapsed"/>
+                    </DataGrid.Columns>
+
+                </DataGrid>
+
+
+            </StackPanel>
+        
+        </StackPanel>
+
+        
+    </Grid>
+</Page>
